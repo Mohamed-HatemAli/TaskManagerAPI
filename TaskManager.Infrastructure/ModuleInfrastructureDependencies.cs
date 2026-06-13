@@ -15,7 +15,7 @@ namespace TaskManager.Infrastructure
 
         public static IServiceCollection AddInfrastructureDependencies(this IServiceCollection services)
         {
-            services.AddTransient<ITaskManagerRepository, TaskManagerRepository>();
+            services.AddTransient<ITaskManagerRepository, ProjectRepository>();
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
             return services;
         }

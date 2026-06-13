@@ -19,5 +19,15 @@
             public const string Update = Prefix + "/Update";
             public const string Delete = Prefix + "/{id}";
         }
+
+        public static class TaskRouting
+        {
+            public const string Prefix = Router.Rule + "Project/{projectId}/Task";
+
+            public const string Create = Prefix + "/Create";
+            public const string UpdateStatus = Prefix + "/{taskId}/UpdateStatus";
+            public const string GetTasksByProject = Prefix + "/List";
+            public const string Delete = Prefix + "/{taskId}";
+        }
     }
 }

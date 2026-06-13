@@ -21,11 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Tasks\Commands\" />
+    <Folder Include="Features\Tasks\Commands\Validations\" />
     <Folder Include="Features\Tasks\Queries\" />
     <Folder Include="Features\User\Queries\Handlers\" />
     <Folder Include="Features\User\Queries\Models\" />
     <Folder Include="Mapping\ApplicationUser\QueryMapping\" />
+    <Folder Include="Mapping\Task\QueryMapping\" />
   </ItemGroup>
 
 </Project>

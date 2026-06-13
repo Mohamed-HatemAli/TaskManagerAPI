@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using TaskManager.Infrastructure.Data;
 
 namespace TaskManager.Infrastructure.InfrastructureBases
@@ -27,11 +22,9 @@ namespace TaskManager.Infrastructure.InfrastructureBases
         #endregion
 
 
+
+
         #region Methods
-
-        #endregion
-
-        #region Actions
         public virtual async Task<T> GetByIdAsync(int id)
         {
 
@@ -40,7 +33,7 @@ namespace TaskManager.Infrastructure.InfrastructureBases
 
         public IQueryable<T> GetTableWithIncludes(params Expression<Func<T, object>>[] includes)
         {
-     
+
             var query = _dbContext.Set<T>().AsQueryable();
             foreach (var include in includes)
             {

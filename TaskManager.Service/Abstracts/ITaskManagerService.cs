@@ -11,6 +11,8 @@ namespace TaskManager.Service.Abstracts
         Task<string> DeleteAsync(Project project);
 
         Task<List<Project>> GetProjectListAsync();
+        Task<string> CreateTaskAsync(int projectId, ProjectTask task);
+
 
     }
 }
