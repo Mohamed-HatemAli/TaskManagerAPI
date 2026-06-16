@@ -8,7 +8,7 @@ namespace TaskManager.Core.Mapping.Task
         {
             CreateTaskCommandMapping();
 
-
+            TaskQueriesMapping();
         }
     }
 }
