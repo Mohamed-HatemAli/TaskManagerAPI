@@ -54,10 +54,6 @@ namespace TaskManager.Infrastructure.Repositories
                 .Include(p => p.Tasks)
                 .ToListAsync();
         }
-
-
-
-
         #endregion
     }
 }
