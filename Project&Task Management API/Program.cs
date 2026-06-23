@@ -17,16 +17,19 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 
-//Connection to sql Server
+#region Connection to sql Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TaskManagerConnection"))
            .ConfigureWarnings(warnings => warnings.Ignore(Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId.PendingModelChangesWarning)));
+#endregion
 
 #region Dependency Injection
 builder.Services.AddInfrastructureDependencies()
                 .AddServiceDependencies()
                 .AddCoreDependencies();
 #endregion
+
+
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

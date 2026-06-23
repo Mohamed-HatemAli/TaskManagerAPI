@@ -10,8 +10,9 @@ namespace Project_Task_Management_API.Controllers
     public class TaskController : AppControllerBase
     {
         [HttpPost(TaskRouting.Create)]
-        public async Task<IActionResult> CreateTask([FromBody] CreateTaskCommand command)
+        public async Task<IActionResult> CreateTask([FromBody] CreateTaskCommand model, [FromRoute] int projectId)
         {
+            var command = new CreateTaskCommand { ProjectId = projectId, title = model.title, isCompleted = model.isCompleted };
             return NewResult(await Mediator.Send(command));
         }
 
