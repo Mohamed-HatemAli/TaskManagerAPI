@@ -1,6 +1,6 @@
 ﻿using TaskManager.Core.Features.User.Commands.Models;
 
-namespace TaskManager.Core.Mapping.ApplicationUser
+namespace TaskManager.Core.Mapping
 {
     public partial class ApplicationUserProfile
     {

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace TaskManager.Core.Mapping.ApplicationUser
+namespace TaskManager.Core.Mapping
 {
     public partial class ApplicationUserProfile : Profile
     {
@@ -8,6 +8,7 @@ namespace TaskManager.Core.Mapping.ApplicationUser
         public ApplicationUserProfile()
         {
             CreateUserMapping();
+            GetUserMapping();
 
         }
     }

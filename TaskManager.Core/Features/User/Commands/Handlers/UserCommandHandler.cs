@@ -26,8 +26,11 @@ namespace TaskManager.Core.Features.User.Commands.Handlers
         #region Handle Functions
         public async Task<Response<string>> Handle(AddUserCommand request, CancellationToken cancellationToken)
         {
-            var userExist = await _userManager.FindByEmailAsync(request.Email);
-            if (userExist != null) return BadRequest<string>("Email already exists.");
+            var EmailExist = await _userManager.FindByEmailAsync(request.Email);
+            if (EmailExist != null) return BadRequest<string>("Email already exists.");
+
+            var userExist = await _userManager.FindByNameAsync(request.UserName);
+            if (userExist != null) return BadRequest<string>("UserName already exists.");
 
             var user = _mapper.Map<ApplicationUser>(request);
 

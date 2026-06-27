@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Project_Task_Management.Data.Entities.Identity;
 using Scalar.AspNetCore;
 using TaskManager.Core;
 using TaskManager.Core.MiddleWare;
@@ -26,14 +24,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 #region Dependency Injection
 builder.Services.AddInfrastructureDependencies()
                 .AddServiceDependencies()
-                .AddCoreDependencies();
+                .AddCoreDependencies()
+                .AddServiceRegisteration();
 #endregion
 
 
-
-builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
 
 var app = builder.Build();
 

@@ -28,5 +28,16 @@
             public const string GetTasksByProject = Prefix + "/List";
             public const string Delete = Prefix + "/{taskId}";
         }
+
+        public static class UserRouting
+        {
+            public const string Prefix = Router.Rule + "User";
+
+            public const string Register = Prefix + "/Register";
+            public const string List = Prefix + "/List";
+            public const string GetById = Prefix + Router.SingleRoute;
+            public const string ChangePassword = Prefix + "/ChangePassword";
+            public const string Delete = Prefix + "/{id}";
+        }
     }
 }
