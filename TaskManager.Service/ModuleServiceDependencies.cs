@@ -10,7 +10,7 @@ namespace TaskManager.Service
         {
             #region Service Register
             services.AddTransient<ITaskManagerService, TaskManagerService>();
-
+            services.AddTransient<IAuthenticationService, AuthenticationService>();
             #endregion
 
             return services;

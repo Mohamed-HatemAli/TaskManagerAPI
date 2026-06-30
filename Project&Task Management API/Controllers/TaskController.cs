@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Project_Task_Management_API.Base;
 using TaskManager.Core.Features.Tasks.Commands.Models;
 using TaskManager.Core.Features.Tasks.Queries.Models;
@@ -7,6 +8,7 @@ using static Project_Task_Management.Data.AppMetaData.Router;
 namespace Project_Task_Management_API.Controllers
 {
     [ApiController]
+    [Authorize]
     public class TaskController : AppControllerBase
     {
         [HttpPost(TaskRouting.Create)]

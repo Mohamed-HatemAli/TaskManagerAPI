@@ -10,9 +10,10 @@ using TaskManager.Core.Features.User.Queries.Results;
 
 namespace TaskManager.Core.Features.User.Queries.Handlers
 {
-    public class UserQueryHandler : ResponseHandler, IRequestHandler<GetUserListQuery, Response<List<GetUserListResponse>>>
+    public class UserQueryHandler : ResponseHandler,
+          IRequestHandler<GetUserListQuery, Response<List<GetUserListResponse>>>,
+          IRequestHandler<GetUserByIdQuery, Response<GetUserByIdResponse>>
     {
-
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IMapper _mapper;
 
@@ -28,7 +29,23 @@ namespace TaskManager.Core.Features.User.Queries.Handlers
                 .ProjectTo<GetUserListResponse>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
-            return new Response<List<GetUserListResponse>>(mappedUserList);
+            return Success(mappedUserList);
+        }
+
+        public async Task<Response<GetUserByIdResponse>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+        {
+            var user = await _userManager.Users
+                .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+
+            if (user == null)
+            {
+                return NotFound<GetUserByIdResponse>("User not found.");
+            }
+
+            var mappedUser = _mapper.Map<GetUserByIdResponse>(user);
+
+            return Success(mappedUser);
         }
     }
 }
+

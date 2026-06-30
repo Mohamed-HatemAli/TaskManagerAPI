@@ -9,8 +9,8 @@ namespace TaskManager.Core.Mapping
     {
         public void GetUserMapping()
         {
-
             CreateMap<ApplicationUser, GetUserListResponse>();
+            CreateMap<ApplicationUser, GetUserByIdResponse>();
         }
 
 

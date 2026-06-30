@@ -6,7 +6,7 @@ using static Project_Task_Management.Data.AppMetaData.Router;
 
 namespace Project_Task_Management_API.Controllers
 {
-    [Route("api/[controller]")]
+
     [ApiController]
     public class ApplicationUserController : AppControllerBase
     {
@@ -24,6 +24,13 @@ namespace Project_Task_Management_API.Controllers
         {
             var response = await Mediator.Send(new GetUserListQuery());
 
+            return NewResult(response);
+        }
+
+        [HttpGet(UserRouting.GetById)]
+        public async Task<IActionResult> GetUserById([FromRoute] int id)
+        {
+            var response = await Mediator.Send(new GetUserByIdQuery(id));
             return NewResult(response);
         }
 
